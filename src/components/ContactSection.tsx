@@ -4,9 +4,10 @@ import { cvData } from '../data/cvData';
 
 interface ContactSectionProps {
   onOpenPdfModal: () => void;
+  onOpenEmailCvModal: () => void;
 }
 
-export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenPdfModal }) => {
+export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenPdfModal, onOpenEmailCvModal }) => {
   const [senderName, setSenderName] = useState('');
   const [senderEmail, setSenderEmail] = useState('');
   const [subject, setSubject] = useState('Academic Collaboration / Inquiry');
@@ -167,6 +168,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenPdfModal }
 
               </div>
 
+              {/* Dedicated "Email CV" Action Button */}
+              <div className="pt-5 border-t border-[#E8DDCA]">
+                <button
+                  type="button"
+                  onClick={onOpenEmailCvModal}
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-4 py-3 bg-[#873C4D] hover:bg-[#662735] text-[#F8F5EE] text-xs sm:text-sm font-semibold rounded-lg shadow-xs hover:shadow transition-all group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#873C4D] focus:ring-offset-2"
+                  aria-label="Email updated academic CV to shivaayjoshi85@gmail.com"
+                >
+                  <Mail className="w-4 h-4 text-[#F8F5EE] group-hover:scale-110 transition-transform shrink-0" />
+                  <span>Email CV to shivaayjoshi85@gmail.com</span>
+                </button>
+                <div className="flex items-center justify-between text-[11px] text-[#292929]/65 mt-2 px-1">
+                  <span>Includes updated PDF attachment</span>
+                  <span className="font-semibold text-[#873C4D]">June 2026 – Present Role</span>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -270,6 +288,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenPdfModal }
           </div>
 
           <div className="flex items-center gap-4">
+            <button
+              onClick={onOpenEmailCvModal}
+              className="hover:text-[#873C4D] transition-colors font-medium"
+            >
+              Email CV (PDF)
+            </button>
+            <span>·</span>
             <button
               onClick={onOpenPdfModal}
               className="hover:text-[#873C4D] transition-colors"

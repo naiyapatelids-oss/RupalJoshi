@@ -8,9 +8,11 @@ import { AwardsSection } from './components/AwardsSection';
 import { ResearchSection } from './components/ResearchSection';
 import { ContactSection } from './components/ContactSection';
 import { PdfModal } from './components/PdfModal';
+import { EmailCvModal } from './components/EmailCvModal';
 
 export default function App() {
   const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
+  const [isEmailCvModalOpen, setIsEmailCvModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#F8F5EE] text-[#292929] flex flex-col font-sans selection:bg-[#873C4D] selection:text-[#F8F5EE]">
@@ -38,13 +40,22 @@ export default function App() {
         <ResearchSection />
 
         {/* Section 8: Contact & Inquiries */}
-        <ContactSection onOpenPdfModal={() => setIsPdfModalOpen(true)} />
+        <ContactSection 
+          onOpenPdfModal={() => setIsPdfModalOpen(true)}
+          onOpenEmailCvModal={() => setIsEmailCvModalOpen(true)}
+        />
       </main>
 
       {/* Source PDF Inspector Modal */}
       <PdfModal
         isOpen={isPdfModalOpen}
         onClose={() => setIsPdfModalOpen(false)}
+      />
+
+      {/* Email CV with PDF Attachment Modal */}
+      <EmailCvModal
+        isOpen={isEmailCvModalOpen}
+        onClose={() => setIsEmailCvModalOpen(false)}
       />
     </div>
   );
