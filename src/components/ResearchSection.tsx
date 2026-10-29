@@ -1,17 +1,10 @@
 import React, { useState, useMemo } from 'react';
-import { BookOpen, Copy, Check, Search, ExternalLink, Sparkles } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { cvData, ResearchItem } from '../data/cvData';
 
 export const ResearchSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'sustainable-craft' | 'machine-learning'>('all');
-  const [copiedId, setCopiedId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
-
-  const handleCopyCitation = (citation: string, id: string) => {
-    navigator.clipboard.writeText(citation);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
 
   const filteredResearch = useMemo(() => {
     return cvData.research.filter((item) => {
@@ -142,27 +135,6 @@ export const ResearchSection: React.FC = () => {
                       </p>
                     </div>
                   </div>
-                </div>
-
-                {/* Right side: Copy Citation Action */}
-                <div className="no-print sm:self-start pt-1">
-                  <button
-                    onClick={() => handleCopyCitation(item.apaCitation, `${item.id}-${index}`)}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#873C4D] bg-[#FAF7F0] hover:bg-[#873C4D] hover:text-[#F8F5EE] border border-[#873C4D]/30 rounded-md transition-all shrink-0"
-                    title="Copy APA formatted citation"
-                  >
-                    {copiedId === `${item.id}-${index}` ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-emerald-600" />
-                        <span className="text-emerald-700">Copied!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5" />
-                        <span>Copy APA</span>
-                      </>
-                    )}
-                  </button>
                 </div>
 
               </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Printer, FileText, Menu, X } from 'lucide-react';
+import { FileText, Menu, X } from 'lucide-react';
 
 interface HeaderProps {
   onOpenPdfModal: () => void;
@@ -17,10 +17,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenPdfModal }) => {
     { label: 'Research', href: '#research' },
     { label: 'Contact', href: '#contact' },
   ];
-
-  const handlePrint = () => {
-    window.print();
-  };
 
   return (
     <header className="sticky top-0 z-40 bg-[#F8F5EE]/95 backdrop-blur-md border-b border-[#E8DDCA]/80 no-print">
@@ -62,14 +58,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenPdfModal }) => {
               <FileText className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Original PDF</span>
               <span className="sm:hidden">PDF</span>
-            </button>
-
-            <button
-              onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-[#F8F5EE] bg-[#873C4D] hover:bg-[#662735] shadow-xs hover:shadow rounded-md transition-all whitespace-nowrap shrink-0"
-            >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Print CV</span>
             </button>
 
             {/* Mobile menu button */}
