@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-burgundy: #873C4D;
+  --color-burgundy-dark: #662735;
+  --color-burgundy-light: #A45062;
+  --color-ivory: #F8F5EE;
+  --color-ivory-warm: #FAF7F0;
+  --color-terracotta: #B86F58;
+  --color-terracotta-dark: #97533E;
+  --color-charcoal: #292929;
+  --color-charcoal-light: #4A4A4A;
+  --color-beige: #E8DDCA;
+  --color-beige-light: #F2EBDE;
+  --color-beige-dark: #D4C3A9;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    color: var(--color-charcoal);
+    background-color: var(--color-ivory);
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Custom Editorial Details */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Print Stylesheet for High-Fidelity PDF Export */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 14mm 16mm 14mm 16mm;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-break-before {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  /* Remove box shadows and background gradients on print */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a {
+    color: #1a1a1a !important;
+    text-decoration: none !important;
+  }
+
+  /* Keep contrast clean */
+  .bg-burgundy, .bg-\[\#873C4D\] {
+    background-color: #873C4D !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
